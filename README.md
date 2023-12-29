@@ -46,3 +46,111 @@ var tfVarSet = "varset-GYigSzGs925Y3eS9";
     }
   };
 ```
+
+
+## emailNotificationData
+- user-id 획득방법
+> 참고 :   
+https://developer.hashicorp.com/terraform/cloud-docs/api-docs#inclusion-of-related-resources
+
+```bash
+ $ curl \
+  --header "Authorization: Bearer $TOKEN" \
+  --header "Content-Type: application/vnd.api+json" \
+  --request GET \
+  https://app.terraform.io/api/v2/teams/team-Q6KGzRJvzvKW3Z1g\?include\=users | jq .data.relationships
+```
+
+- json 데이터 결과
+```json
+{
+  "organization": {
+    "data": {
+      "id": "hyungwook",
+      "type": "organizations"
+    }
+  },
+  "users": {
+    "data": [
+      {
+        "id": "user-2FB1FXN7NpK7cvce",
+        "type": "users"
+      },
+      {
+        "id": "user-Q6g847ovPx7q48Py",
+        "type": "users"
+      },
+      {
+        "id": "user-2rMYvq9amdbdmjJS",
+        "type": "users"
+      }
+    ]
+  },
+  "organization-memberships": {
+    "data": [
+      {
+        "id": "ou-F1d4Ktr697prAtVV",
+        "type": "organization-memberships"
+      },
+      {
+        "id": "ou-9QK28DTDryphXX1K",
+        "type": "organization-memberships"
+      },
+      {
+        "id": "ou-4PuPWZv2ooG4vbyn",
+        "type": "organization-memberships"
+      }
+    ]
+  },
+  "authentication-token": {
+    "meta": {}
+  }
+}
+```
+
+- user name 획득
+```bash
+ curl \
+  --header "Authorization: Bearer $TOKEN" \
+  --header "Content-Type: application/vnd.api+json" \
+  --request GET \
+  https://app.terraform.io/api/v2/users/user-2rMYvq9amdbdmjJS | jq .
+```
+
+```json
+{
+  "data": {
+    "id": "user-2rMYvq9amdbdmjJS",
+    "type": "users",
+    "attributes": {
+      "username": "hyungwook",
+      "is-service-account": false,
+      "avatar-url": "https://www.gravatar.com/avatar/c720274d0e787af6dd8605ef77c952a5?s=100&d=mm",
+      "permissions": {
+        "can-create-organizations": false,
+        "can-view-settings": false,
+        "can-change-email": false,
+        "can-change-username": true,
+        "can-manage-user-tokens": false,
+        "can-view2fa-settings": false,
+        "can-manage-hcp-account": false
+      }
+    },
+    "relationships": {
+      "authentication-tokens": {
+        "links": {
+          "related": "/api/v2/users/user-2rMYvq9amdbdmjJS/authentication-tokens"
+        }
+      },
+      "github-app-oauth-tokens": {
+        "links": {
+          "related": "/api/v2/users/user-2rMYvq9amdbdmjJS/github-app-oauth-tokens"
+        }
+      }
+    },
+    "links": {
+      "self": "/api/v2/users/user-2rMYvq9amdbdmjJS"
+    }
+  }
+}
+```
