@@ -154,3 +154,21 @@ https://developer.hashicorp.com/terraform/cloud-docs/api-docs#inclusion-of-relat
   }
 }
 ```
+
+
+
+
+## 완료화면
+
+![img](https://raw.githubusercontent.com/hyungwook0221/img/main/uPic/0uvKbW.jpg)
+
+![img](https://raw.githubusercontent.com/hyungwook0221/img/main/uPic/vHJIIQ.jpg)
+
+![img](https://raw.githubusercontent.com/hyungwook0221/img/main/uPic/BUcHeR.jpg)
+
+
+## 삭제화면
+
+![img](https://raw.githubusercontent.com/hyungwook0221/img/main/uPic/690Ohj.jpg)
+
+![img](https://raw.githubusercontent.com/hyungwook0221/img/main/uPic/q4D20c.jpg)
